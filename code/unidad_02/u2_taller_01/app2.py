@@ -56,3 +56,40 @@ mail = re.compile(r"""
 """, re.X)
 mails = mail.findall(correos)
 print(mails)
+
+# METACARACTERES DELIMITADORES
+# ^     inicio de linea
+# $     fin de linea
+# \A    inicio de texto
+# \Z    fin de texto
+# .     cualquier caracter en linea
+# \b    encuentra limite de palabra
+# \B    encuentra distitnot al limite de palabra
+
+# METACARACTERES CLASES PREDEFINIBAS
+# \w    un caracter alfanumerico (incluye _)
+# \W    un caracter NO alfanumerico
+# \d    un caracter digito
+# \D    un caracter no numerico
+# \s    cualquier espacio (lo mismo que \t\n\r\f)
+# \S    un no espacio
+
+# METACARACTERES ITERADORES
+# *     {0,}
+# +     {1,}
+# ?     cero o uno
+# {n}   exactamente n veces
+# {n,}  por lo menos n veces
+# {n,m} por lo menos n pero no más de m veces.
+# *?    cero o mas, similar a {0,}?
+# +?    {1,}?
+# ??    {0,1}?
+# {n}?
+# {n, }?
+# {n},m?
+
+# Validando una fecha
+fecha = re.compile(r'^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\d\d)')
+# 20/11/2023
+
+print( fecha.search('31/02/2023') )
