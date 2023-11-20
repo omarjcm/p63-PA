@@ -93,3 +93,13 @@ fecha = re.compile(r'^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\d\d)')
 # 20/11/2023
 
 print( fecha.search('31/02/2023') )
+
+## Validacion de correos con las siguientes especificaciones
+# El primer carácter debe ser un número.
+# Los caracteres siguientes pueden ser números, letras o puntos.
+# Luego debe seguir un @.
+# Después del @, los caracteres pueden ser letras o puntos.
+# La dirección debe terminar con minimo dos o maximo tres caracteres.
+correo = re.compile(r'^[a-zA-Z][a-zA-Z0-9.]*[a-zA-Z0-9]@[a-zA-Z.]*[.][a-z]{2,3}$')
+
+print( correo.search('guillermo.pizarro.v@gmail.com.ec') )
