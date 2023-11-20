@@ -34,3 +34,25 @@ puede = podra.sub('Puede', becquer, 1)
 print(puede)
 
 print(re.findall(r'\bPodrá\b', becquer))
+
+podra = re.compile(r'podrá\b', re.IGNORECASE)
+puede = podra.sub('puede', becquer)
+print(puede)
+
+correos = """guillermo-pizarro@gmail.com, raul.lopez@relopezbriega.com, Raul Lopez Briega,
+foo bar, relopezbriega@relopezbriega.com.edu.ar, raul@github.io, 
+https://relopezbriega.com.ar, https://relopezbriega.github.io, 
+python@python, river@riverplate.com.ar, pythonAR@python.pythonAR
+"""
+
+mail = re.compile(r"""
+\b
+[\w.]
++@
+[\w.]
++\.
+[a-zA-Z]{2,6}
+\b
+""", re.X)
+mails = mail.findall(correos)
+print(mails)
