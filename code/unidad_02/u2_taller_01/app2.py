@@ -1,5 +1,7 @@
 import re
 
+# URL: https://relopezbriega.github.io/blog/2015/07/19/expresiones-regulares-con-python/
+
 # texto de entrada
 becquer = """Podrá nublarse el sol eternamente; 
 Podrá secarse en un instante el mar; 
@@ -27,3 +29,8 @@ print(palabras)
 podra = re.compile(r'\b(P|p)odrá\b')
 puede = podra.sub('Puede', becquer)
 print(puede)
+
+puede = podra.sub('Puede', becquer, 1)
+print(puede)
+
+print(re.findall(r'\bPodrá\b', becquer))

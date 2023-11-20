@@ -9,3 +9,4 @@ with open(ruta, 'r') as reader:
         ipsum = re.compile(r'\bipsum\b')
         ten_cuidado = ipsum.sub('Ten cuidado', line)
         print(ten_cuidado)
+
