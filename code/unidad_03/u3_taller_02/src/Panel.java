@@ -1,19 +1,18 @@
-import javax.management.timer.Timer;
 import javax.swing.JPanel;
+import javax.swing.Timer;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Timer;
 
 public class Panel extends JPanel implements ActionListener {
 
     private Point p1;
     private Point p2;
     private int dx;
-    private int dy;
+    private int dy;    
 
     public Panel() {
         this.p1 = new Point(20,40);
@@ -22,7 +21,7 @@ public class Panel extends JPanel implements ActionListener {
         this.dx = 5;
         this.dy = 5;
 
-        Timer tiempo = new Timer();
+        Timer tiempo = new Timer(100, this);
         tiempo.start();
     }
 
@@ -38,6 +37,8 @@ public class Panel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        this.p1.x += this.dx;
 
+        repaint();
     }
 }
