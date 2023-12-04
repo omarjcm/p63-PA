@@ -14,6 +14,16 @@ public class Articulo<T> {
     }
 
     @Override
+    public boolean equals(Object elemento) {
+        if (elemento instanceof Libro) {
+            return ((Libro)this.contenido).getContenido();
+        } else if (elemento instanceof Electronico) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public String toString() {
         return "Articulo{" + "contenido=" + contenido + '}';
     }

@@ -12,6 +12,15 @@ public class Almacen<T> {
         return articulos;
     }
 
+    public Articulo<T> buscarArticulo(String codigo) {
+        for (Articulo<T> articulo : this.articulos) {
+            if (((Articulo<Libro>)articulo.getContenido()).getCodigo().equals(codigo) {
+                return articulo;
+            }
+        }
+        return null;
+    }
+
     // Método para imprimir todos los artículos
     public void imprimirInventario() {
         for (Articulo<T> articulo : articulos) {

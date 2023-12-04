@@ -12,7 +12,7 @@ public class Panel extends JPanel implements ActionListener {
     private Point p1;
     private Point p2;
     private int dx;
-    private int dy;    
+    private int dy;
 
     public Panel() {
         this.p1 = new Point(20,40);
