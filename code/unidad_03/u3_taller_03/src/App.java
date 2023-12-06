@@ -6,7 +6,7 @@ public class App {
         Ventana ventana = new Ventana("Hilos con Graficos");
         Panel panel = new Panel();
         ventana.add(panel);
-
+        
         Objeto obj1 = new Objeto(Color.RED, new Rectangle(0,0, 400, 400), 1);
         Objeto obj2 = new Objeto(Color.PINK, new Rectangle(10,0, 400, 400), 2);
 
