@@ -1,3 +1,4 @@
+package ejemplo_01;
 import java.util.concurrent.Semaphore;
 
 public class App2 {
