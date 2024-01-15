@@ -11,13 +11,6 @@ public class Conexion {
     private String nombre;
 
     public Conexion() {
-        this.driverClass = "org.postgresql.Driver";
-        this.driver = "jdbc:postgresql";
-        this.usuario = "postgres";
-        this.clave = "inexcelsisdeo";
-        this.host = "localhost";
-        this.puerto = "5432";
-        this.nombre = "pa";
     }
 
     public String getNombre() {
@@ -62,4 +55,8 @@ public class Conexion {
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
+
+    public String urlConexion() {
+        return this.driver+"://" + this.host + ":" + this.puerto + "/" + this.nombre;
+    } 
 }
