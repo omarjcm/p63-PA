@@ -15,16 +15,17 @@ import modelo.dominio.Estudiante;
  *
  * @author Core i5 11va
  */
-public class EstudianteBD extends Estudiante {
+public class EstudianteBD extends Estudiante implements ObjetoBD {
     
     private BD bd;
     
     public EstudianteBD() {
         this.bd = new BD();
     }
-    
-    public ArrayList<Estudiante> listar() {
-        ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
+     
+    @Override
+    public ArrayList<Object> listar() {
+        ArrayList<Object> estudiantes = new ArrayList<Object>();
         
         try {
             this.bd.conectar();
@@ -51,9 +52,26 @@ public class EstudianteBD extends Estudiante {
     
     public static void main(String[] args) {
         EstudianteBD obj = new EstudianteBD();
-        ArrayList<Estudiante> estudiantes = obj.listar();
-        for (Estudiante objeto : estudiantes) {
-            System.out.println( objeto.getCedula() );
+        ArrayList<Object> estudiantes = obj.listar();
+        for (Object objeto : estudiantes) {
+            System.out.println( ((Estudiante) objeto).getCedula() );
         }
+    }
+
+    @Override
+    public void registrar(Object objeto) {
+    }
+
+    @Override
+    public void modificar(Object objeto) {
+    }
+
+    @Override
+    public void eliminar(Object objeto) {
+    }
+
+    @Override
+    public Object buscar(Object objeto) {
+        return null;
     }
 }
