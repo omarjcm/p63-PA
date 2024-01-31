@@ -4,6 +4,8 @@
  */
 package vista;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Core i5 11va
@@ -11,6 +13,7 @@ package vista;
 public class EstudianteGUI extends javax.swing.JFrame {
 
     public EstudianteTbl dataTbl;
+    private DefaultTableModel modelo;
     
     /**
      * Creates new form EstudianteGUI
@@ -19,6 +22,10 @@ public class EstudianteGUI extends javax.swing.JFrame {
         initComponents();
         
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        
+        this.modelo = (DefaultTableModel) this.estudiantesTbl.getModel();
+        this.modelo.setRowCount(0);
         
         this.dataTbl = new EstudianteTbl();
         this.dataTbl.verTabla(this.estudiantesTbl);

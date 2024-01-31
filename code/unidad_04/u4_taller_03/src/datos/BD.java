@@ -1,11 +1,16 @@
 package datos;
 
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class BD {
 
     private Connection conexion;
     private Archivo datos;
+    
+    private PreparedStatement ps;
+    private ResultSet rs;
 
     public BD() {
         this.datos = new Archivo();
@@ -25,9 +30,24 @@ public class BD {
             System.out.println("[error] - " + e.getMessage());
         }
     }
+    
+    public ResultSet ejecutar(String sql) {
+        try {
+            this.ps = this.conexion.prepareStatement(sql);
+            this.rs = this.ps.executeQuery();
+            
+            return this.rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(BD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    } 
 
     public void cerrar() {
         try {
+            if (this.ps != null) {
+                this.ps.close();
+            }
             if (this.conexion != null) {
                 this.conexion.close();
             }
