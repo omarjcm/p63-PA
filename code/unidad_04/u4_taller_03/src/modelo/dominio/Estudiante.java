@@ -1,6 +1,7 @@
 package modelo.dominio;
 
 import java.util.*;
+import javax.swing.JButton;
 
 /**
  * 
@@ -67,5 +68,14 @@ public class Estudiante {
     }
     public String getNombre() {
         return nombre;
+    }
+    
+    public Object[] getDatos() {
+        
+        JButton modificarBtn = new JButton( "Modificar" );
+        JButton eliminarBtn = new JButton( "Eliminar" );
+        
+        Object[] valores = { this.cedula, this.nombre, this.apellido, this.fechaNacimiento, modificarBtn, eliminarBtn };
+        return valores;
     }
 }

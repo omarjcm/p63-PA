@@ -4,7 +4,10 @@
  */
 package vista;
 
+import controlador.GestionarEstudiante;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import modelo.dominio.Estudiante;
 
 /**
  *
@@ -12,8 +15,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class EstudianteGUI extends javax.swing.JFrame {
 
-    public EstudianteTbl dataTbl;
+    private EstudianteTbl dataTbl;
     private DefaultTableModel modelo;
+    
+    private GestionarEstudiante gestionar;
     
     /**
      * Creates new form EstudianteGUI
@@ -21,14 +26,24 @@ public class EstudianteGUI extends javax.swing.JFrame {
     public EstudianteGUI() {
         initComponents();
         
+        this.gestionar = new GestionarEstudiante();
+        
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
         
-        this.modelo = (DefaultTableModel) this.estudiantesTbl.getModel();
-        this.modelo.setRowCount(0);
-        
         this.dataTbl = new EstudianteTbl();
         this.dataTbl.verTabla(this.estudiantesTbl);
+        
+        cargarDatos();
+    }
+    
+    public void cargarDatos() {
+        this.modelo = (DefaultTableModel) this.estudiantesTbl.getModel();
+        this.modelo.setRowCount(0);
+        ArrayList<Object> estudiantes = this.gestionar.listar();
+        for (Object estudiante : estudiantes) {
+            this.modelo.addRow( ((Estudiante)estudiante).getDatos() );
+        }
     }
 
     /**
@@ -165,4 +180,8 @@ public class EstudianteGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    private GestionarEstudiante GestionarEstudiante() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
