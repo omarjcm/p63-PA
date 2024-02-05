@@ -13,25 +13,30 @@ import modelo.dominio.Estudiante;
  *
  * @author Core i5 11va
  */
-public class GestionarEstudiante {
+public class GestionarEstudiante implements GestionarObjeto {
     public GestionarEstudiante() {
         
     }
     
-    public void registrar() {
-        
-    }
-    public void modificar() {
-        
-    }
-    public void eliminar() {
-        
-    }
-    public void buscar() {
-        
-    }
     public ArrayList<Object> listar() {
         EstudianteBD bd = new EstudianteBD();
         return bd.listar();
+    }
+
+    @Override
+    public void registrar(Object objeto) {
+    }
+
+    @Override
+    public void modificar(Object objeto) {
+    }
+
+    @Override
+    public void eliminar(Object objeto) {
+    }
+
+    @Override
+    public Object buscar(Object objeto) {
+        return null;
     }
 }

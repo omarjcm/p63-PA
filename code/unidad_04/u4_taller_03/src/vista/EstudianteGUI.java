@@ -30,6 +30,7 @@ public class EstudianteGUI extends javax.swing.JFrame {
         
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        this.setResizable(false);
         
         this.dataTbl = new EstudianteTbl();
         this.dataTbl.verTabla(this.estudiantesTbl);
@@ -61,7 +62,7 @@ public class EstudianteGUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         estudiantesTbl = new javax.swing.JTable();
         agregarBtn = new javax.swing.JButton();
-        cancelarBtn = new javax.swing.JButton();
+        cerrarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,11 +84,16 @@ public class EstudianteGUI extends javax.swing.JFrame {
         jScrollPane1.setViewportView(estudiantesTbl);
 
         agregarBtn.setText("Agregar");
-
-        cancelarBtn.setText("Cancelar");
-        cancelarBtn.addActionListener(new java.awt.event.ActionListener() {
+        agregarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelarBtnActionPerformed(evt);
+                agregarBtnActionPerformed(evt);
+            }
+        });
+
+        cerrarBtn.setText("Cerrar");
+        cerrarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarBtnActionPerformed(evt);
             }
         });
 
@@ -109,7 +115,7 @@ public class EstudianteGUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(agregarBtn)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cancelarBtn))
+                            .addComponent(cerrarBtn))
                         .addGap(22, 22, 22))))
         );
         layout.setVerticalGroup(
@@ -125,16 +131,21 @@ public class EstudianteGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cancelarBtn)
+                .addComponent(cerrarBtn)
                 .addGap(17, 17, 17))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cancelarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBtnActionPerformed
+    private void cerrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarBtnActionPerformed
         this.setVisible(false);
-    }//GEN-LAST:event_cancelarBtnActionPerformed
+    }//GEN-LAST:event_cerrarBtnActionPerformed
+
+    private void agregarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarBtnActionPerformed
+        EstudianteVistaGUI estudiante = new EstudianteVistaGUI();
+        estudiante.setVisible(true);
+    }//GEN-LAST:event_agregarBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,13 +186,9 @@ public class EstudianteGUI extends javax.swing.JFrame {
     private javax.swing.JButton agregarBtn;
     private javax.swing.JButton buscarBtn;
     private javax.swing.JTextField buscarTxt;
-    private javax.swing.JButton cancelarBtn;
+    private javax.swing.JButton cerrarBtn;
     private javax.swing.JTable estudiantesTbl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-
-    private GestionarEstudiante GestionarEstudiante() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

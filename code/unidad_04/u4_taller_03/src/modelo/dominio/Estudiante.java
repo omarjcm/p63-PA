@@ -78,4 +78,9 @@ public class Estudiante {
         Object[] valores = { this.cedula, this.nombre, this.apellido, this.fechaNacimiento, modificarBtn, eliminarBtn };
         return valores;
     }
+    
+    @Override
+    public String toString() {
+        return this.cedula + "-" + this.nombre + " " + this.apellido + "-" + this.getFechaNacimiento().toString();
+    }
 }
