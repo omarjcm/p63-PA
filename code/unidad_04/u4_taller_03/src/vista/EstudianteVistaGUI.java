@@ -5,6 +5,7 @@
 package vista;
 
 import controlador.GestionarEstudiante;
+import javax.swing.table.DefaultTableModel;
 import modelo.dominio.Estudiante;
 
 /**
@@ -14,6 +15,17 @@ import modelo.dominio.Estudiante;
 public class EstudianteVistaGUI extends javax.swing.JFrame {
 
     private GestionarEstudiante gestionar;
+    private DefaultTableModel modelo;
+    
+    public EstudianteVistaGUI(DefaultTableModel modelo) {
+        initComponents();
+        
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        this.setResizable(false);
+        
+        this.modelo = modelo;
+    }
     
     /**
      * Creates new form EstudianteVistaGUI
@@ -150,7 +162,10 @@ public class EstudianteVistaGUI extends javax.swing.JFrame {
         estudiante.setApellido( this.apellidoTxt.getText() );
         estudiante.setFechaNacimiento( this.fechaNacimientoCal.getDate() );
         
-        System.out.println( estudiante );
+        this.gestionar.registrar(estudiante);
+        
+        this.modelo.addRow( estudiante.getDatos() );
+        this.setVisible(false);
     }//GEN-LAST:event_guardarBtnActionPerformed
 
     private void cancelarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBtnActionPerformed

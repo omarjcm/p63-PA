@@ -60,6 +60,21 @@ public class EstudianteBD extends Estudiante implements ObjetoBD {
 
     @Override
     public void registrar(Object objeto) {
+        try {
+            this.bd.conectar();
+            
+            String sql = "INSERT INTO estudiante(cedula, nombre, apellido, fechaNacimiento) VALUES(?, ?, ?, ?)";
+            this.bd.setPs( this.bd.getConexion().prepareStatement(sql) );
+            this.bd.getPs().setString(1, ((Estudiante) objeto).getCedula());
+            this.bd.getPs().setString(2, ((Estudiante) objeto).getNombre());
+            this.bd.getPs().setString(3, ((Estudiante) objeto).getApellido());
+            this.bd.getPs().setDate(4, ((Estudiante) objeto).getFechaNacimiento());
+            this.bd.getPs().execute();
+            
+            this.bd.cerrar();
+        } catch (SQLException ex) {
+            Logger.getLogger(EstudianteBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

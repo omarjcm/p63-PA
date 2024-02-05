@@ -143,7 +143,7 @@ public class EstudianteGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_cerrarBtnActionPerformed
 
     private void agregarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarBtnActionPerformed
-        EstudianteVistaGUI estudiante = new EstudianteVistaGUI();
+        EstudianteVistaGUI estudiante = new EstudianteVistaGUI((DefaultTableModel) this.estudiantesTbl.getModel());
         estudiante.setVisible(true);
     }//GEN-LAST:event_agregarBtnActionPerformed
 

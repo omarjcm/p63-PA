@@ -63,8 +63,9 @@ public class Estudiante {
     public Integer getEstudianteId() {
         return estudianteId;
     }
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
+    public java.sql.Date getFechaNacimiento() {
+        java.sql.Date fecha = new java.sql.Date(this.fechaNacimiento.getTime());
+        return fecha;
     }
     public String getNombre() {
         return nombre;

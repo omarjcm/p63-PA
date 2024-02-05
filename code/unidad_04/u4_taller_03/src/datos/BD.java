@@ -62,4 +62,20 @@ public class BD {
         conexion.conectar();
         conexion.cerrar();
     }
+
+    public PreparedStatement getPs() {
+        return ps;
+    }
+
+    public void setPs(PreparedStatement ps) {
+        this.ps = ps;
+    }
+
+    public Connection getConexion() {
+        return conexion;
+    }
+
+    public void setConexion(Connection conexion) {
+        this.conexion = conexion;
+    }
 }
