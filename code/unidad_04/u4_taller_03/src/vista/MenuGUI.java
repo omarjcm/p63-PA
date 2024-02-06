@@ -4,6 +4,7 @@
  */
 package vista;
 
+import vista.estudiante.EstudianteGUI;
 import javax.swing.JFrame;
 
 /**
