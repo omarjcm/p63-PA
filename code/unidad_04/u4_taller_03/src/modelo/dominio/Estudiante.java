@@ -48,6 +48,9 @@ public class Estudiante {
     public void setEstudianteId(Integer estudianteId) {
         this.estudianteId = estudianteId;
     }
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = java.sql.Date.valueOf(fechaNacimiento);
+    }
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
@@ -74,7 +77,9 @@ public class Estudiante {
     public Object[] getDatos() {
         
         JButton modificarBtn = new JButton( "Modificar" );
+        modificarBtn.setName("M");
         JButton eliminarBtn = new JButton( "Eliminar" );
+        eliminarBtn.setName("E");
         
         Object[] valores = { this.cedula, this.nombre, this.apellido, this.fechaNacimiento, modificarBtn, eliminarBtn };
         return valores;

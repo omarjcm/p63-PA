@@ -6,6 +6,7 @@ package vista.estudiante;
 
 import controlador.GestionarEstudiante;
 import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 import modelo.dominio.Estudiante;
 
@@ -81,6 +82,11 @@ public class EstudianteGUI extends javax.swing.JFrame {
 
             }
         ));
+        estudiantesTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                estudiantesTblMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(estudiantesTbl);
 
         agregarBtn.setText("Agregar");
@@ -146,6 +152,32 @@ public class EstudianteGUI extends javax.swing.JFrame {
         EstudianteVistaGUI estudiante = new EstudianteVistaGUI((DefaultTableModel) this.estudiantesTbl.getModel());
         estudiante.setVisible(true);
     }//GEN-LAST:event_agregarBtnActionPerformed
+
+    private void estudiantesTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_estudiantesTblMouseClicked
+        int columna = this.estudiantesTbl.getColumnModel().getColumnIndexAtX( evt.getX() );
+        int fila = evt.getY() / this.estudiantesTbl.getRowHeight();
+        
+        if (fila < this.estudiantesTbl.getRowCount() && fila >=0 && 
+                columna < this.estudiantesTbl.getColumnCount() && columna >=0) {
+            Object value = this.estudiantesTbl.getValueAt(fila, columna);
+            if (value instanceof JButton) {
+                ((JButton)value).doClick();
+                JButton boton = (JButton) value;
+                
+                Estudiante estudiante = new Estudiante();
+                estudiante.setCedula( this.estudiantesTbl.getValueAt( this.estudiantesTbl.getSelectedRow(), 0).toString() );
+                estudiante.setNombre( this.estudiantesTbl.getValueAt( this.estudiantesTbl.getSelectedRow(), 1).toString() );
+                estudiante.setApellido( this.estudiantesTbl.getValueAt( this.estudiantesTbl.getSelectedRow(), 2).toString() );
+                estudiante.setFechaNacimiento( this.estudiantesTbl.getValueAt( this.estudiantesTbl.getSelectedRow(), 3).toString() );
+                
+                if (boton.getName().equals("M")) {
+                    System.out.println( estudiante.toString() );
+                } else if (boton.getName().equals("E")) {
+                    
+                }
+            }
+        }
+    }//GEN-LAST:event_estudiantesTblMouseClicked
 
     /**
      * @param args the command line arguments
