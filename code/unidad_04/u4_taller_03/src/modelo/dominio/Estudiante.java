@@ -75,7 +75,6 @@ public class Estudiante {
     }
     
     public Object[] getDatos() {
-        
         JButton modificarBtn = new JButton( "Modificar" );
         modificarBtn.setName("M");
         JButton eliminarBtn = new JButton( "Eliminar" );
