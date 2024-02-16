@@ -29,6 +29,8 @@ public class GestionarEstudiante implements GestionarObjeto {
 
     @Override
     public void modificar(Object objeto) {
+        EstudianteBD bd = new EstudianteBD();
+        bd.modificar(objeto);
     }
 
     @Override

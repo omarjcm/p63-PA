@@ -45,6 +45,9 @@ public class Estudiante {
     public void setCedula(String cedula) {
         this.cedula = cedula;
     }
+    public void setEstudianteId(String estudianteId) {
+        this.estudianteId = Integer.parseInt(estudianteId);
+    }
     public void setEstudianteId(Integer estudianteId) {
         this.estudianteId = estudianteId;
     }
@@ -80,7 +83,7 @@ public class Estudiante {
         JButton eliminarBtn = new JButton( "Eliminar" );
         eliminarBtn.setName("E");
         
-        Object[] valores = { this.cedula, this.nombre, this.apellido, this.fechaNacimiento, modificarBtn, eliminarBtn };
+        Object[] valores = { this.estudianteId, this.cedula, this.nombre, this.apellido, this.fechaNacimiento, modificarBtn, eliminarBtn };
         return valores;
     }
     

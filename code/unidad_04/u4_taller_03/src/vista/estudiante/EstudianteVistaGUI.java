@@ -5,6 +5,7 @@
 package vista.estudiante;
 
 import controlador.GestionarEstudiante;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelo.dominio.Estudiante;
 
@@ -16,7 +17,26 @@ public class EstudianteVistaGUI extends javax.swing.JFrame {
 
     private GestionarEstudiante gestionar;
     private DefaultTableModel modelo;
+    private Estudiante estudiante;
+    private String tipo_accion;
     
+    public EstudianteVistaGUI(DefaultTableModel modelo, Estudiante estudiante, String tipo_accion) {
+        initComponents();
+        
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        this.setResizable(false);
+        
+        this.cedulaTxt.setText(estudiante.getCedula());
+        this.nombreTxt.setText(estudiante.getNombre());
+        this.apellidoTxt.setText(estudiante.getApellido());
+        this.fechaNacimientoCal.setDate( estudiante.getFechaNacimiento() );
+        this.estudiante = estudiante;
+        
+        this.modelo = modelo;
+        this.tipo_accion = tipo_accion;
+    }
+
     public EstudianteVistaGUI(DefaultTableModel modelo) {
         initComponents();
         
@@ -25,6 +45,9 @@ public class EstudianteVistaGUI extends javax.swing.JFrame {
         this.setResizable(false);
         
         this.modelo = modelo;
+        this.estudiante = new Estudiante();
+        
+        this.tipo_accion = "R";
     }
     
     /**
@@ -156,15 +179,24 @@ public class EstudianteVistaGUI extends javax.swing.JFrame {
 
     private void guardarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarBtnActionPerformed
         this.gestionar = new GestionarEstudiante();
-        Estudiante estudiante = new Estudiante();
-        estudiante.setCedula( this.cedulaTxt.getText() );
-        estudiante.setNombre( this.nombreTxt.getText() );
-        estudiante.setApellido( this.apellidoTxt.getText() );
-        estudiante.setFechaNacimiento( this.fechaNacimientoCal.getDate() );
+        this.estudiante.setCedula( this.cedulaTxt.getText() );
+        this.estudiante.setNombre( this.nombreTxt.getText() );
+        this.estudiante.setApellido( this.apellidoTxt.getText() );
+        this.estudiante.setFechaNacimiento( this.fechaNacimientoCal.getDate() );
+
+        if (this.tipo_accion.equals("R")) {
+            this.gestionar.registrar(estudiante);
+            this.modelo.addRow( estudiante.getDatos() );
+        } else if (this.tipo_accion.equals("M")) {
+            this.gestionar.modificar(estudiante);
+        }
         
-        this.gestionar.registrar(estudiante);
+        this.modelo.setRowCount(0);
+        ArrayList<Object> estudiantes = this.gestionar.listar();
+        for (Object estudiante : estudiantes) {
+            this.modelo.addRow( ((Estudiante)estudiante).getDatos() );
+        }
         
-        this.modelo.addRow( estudiante.getDatos() );
         this.setVisible(false);
     }//GEN-LAST:event_guardarBtnActionPerformed
 

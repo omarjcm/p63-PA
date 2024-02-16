@@ -165,13 +165,15 @@ public class EstudianteGUI extends javax.swing.JFrame {
                 JButton boton = (JButton) value;
                 
                 Estudiante estudiante = new Estudiante();
-                estudiante.setCedula( this.estudiantesTbl.getValueAt( this.estudiantesTbl.getSelectedRow(), 0).toString() );
-                estudiante.setNombre( this.estudiantesTbl.getValueAt( this.estudiantesTbl.getSelectedRow(), 1).toString() );
-                estudiante.setApellido( this.estudiantesTbl.getValueAt( this.estudiantesTbl.getSelectedRow(), 2).toString() );
-                estudiante.setFechaNacimiento( this.estudiantesTbl.getValueAt( this.estudiantesTbl.getSelectedRow(), 3).toString() );
+                estudiante.setEstudianteId( this.estudiantesTbl.getValueAt( this.estudiantesTbl.getSelectedRow(), 0).toString() );
+                estudiante.setCedula( this.estudiantesTbl.getValueAt( this.estudiantesTbl.getSelectedRow(), 1).toString() );
+                estudiante.setNombre( this.estudiantesTbl.getValueAt( this.estudiantesTbl.getSelectedRow(), 2).toString() );
+                estudiante.setApellido( this.estudiantesTbl.getValueAt( this.estudiantesTbl.getSelectedRow(), 3).toString() );
+                estudiante.setFechaNacimiento( this.estudiantesTbl.getValueAt( this.estudiantesTbl.getSelectedRow(), 4).toString() );
                 
                 if (boton.getName().equals("M")) {
-                    System.out.println( estudiante.toString() );
+                    EstudianteVistaGUI gui = new EstudianteVistaGUI((DefaultTableModel) this.estudiantesTbl.getModel(), estudiante, boton.getName());
+                    gui.setVisible(true);                    
                 } else if (boton.getName().equals("E")) {
                     
                 }

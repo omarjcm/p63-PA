@@ -4,13 +4,8 @@
  */
 package vista.estudiante;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import vista.Render;
 
 /**
@@ -26,7 +21,7 @@ public class EstudianteTbl {
         
         DefaultTableModel modelo = new DefaultTableModel(
                 new Object[][]{},
-                new Object[]{ "Cedula", "Nombre", "Apellido", "Fecha de Nacimiento", "Modificar", "Eliminar" }
+                new Object[]{ "ID", "Cedula", "Nombre", "Apellido", "Fecha de Nacimiento", "Modificar", "Eliminar" }
         );
         
         tabla.setModel(modelo);

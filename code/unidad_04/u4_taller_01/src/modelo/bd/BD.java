@@ -32,7 +32,6 @@ public class BD {
                 this.conexion.close();
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             System.out.println("[error] - " + e.getMessage());
         }
     }
@@ -43,3 +42,4 @@ public class BD {
         conexion.cerrar();
     }
 }
+
