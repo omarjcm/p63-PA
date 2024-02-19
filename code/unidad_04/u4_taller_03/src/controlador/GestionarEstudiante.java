@@ -35,10 +35,13 @@ public class GestionarEstudiante implements GestionarObjeto {
 
     @Override
     public void eliminar(Object objeto) {
+        EstudianteBD bd = new EstudianteBD();
+        bd.eliminar(objeto);
     }
 
     @Override
-    public Object buscar(Object objeto) {
-        return null;
+    public ArrayList<Object> buscar(Object objeto) {
+        EstudianteBD bd = new EstudianteBD();
+        return bd.buscar(objeto);
     }
 }

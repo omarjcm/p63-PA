@@ -99,10 +99,48 @@ public class EstudianteBD extends Estudiante implements ObjetoBD {
 
     @Override
     public void eliminar(Object objeto) {
+        try {
+            this.bd.conectar();
+            
+            String sql = "DELETE FROM estudiante WHERE estudianteid = ?;";
+            this.bd.setPs( this.bd.getConexion().prepareStatement(sql) );
+            this.bd.getPs().setInt(1, ((Estudiante) objeto).getEstudianteId());
+            this.bd.getPs().execute();
+            
+            this.bd.cerrar();
+        } catch (SQLException ex) {
+            Logger.getLogger(EstudianteBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
-    public Object buscar(Object objeto) {
-        return null;
+    public ArrayList<Object> buscar(Object obj) {
+        ArrayList<Object> estudiantes = new ArrayList<Object>();
+        Estudiante obj_estudiante = (Estudiante) obj;
+        
+        try {
+            this.bd.conectar();
+            String sql = "SELECT * FROM estudiante WHERE cedula LIKE ?;";
+            this.bd.setPs( this.bd.getConexion().prepareStatement(sql) );
+            this.bd.getPs().setString(1, obj_estudiante.getCedula() + "%");
+            ResultSet rs = this.bd.getPs().executeQuery();
+            
+            while (rs.next()) {
+                Estudiante objeto = new Estudiante();
+                objeto.setEstudianteId( rs.getInt("estudianteId") );
+                objeto.setCedula( rs.getString("cedula") );
+                objeto.setNombre( rs.getString("nombre") );
+                objeto.setApellido( rs.getString("apellido") );
+                objeto.setFechaNacimiento(rs.getDate("fechaNacimiento") );
+                
+                estudiantes.add(objeto);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EstudianteBD.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            this.bd.cerrar();            
+        }
+        
+        return estudiantes;
     }
 }

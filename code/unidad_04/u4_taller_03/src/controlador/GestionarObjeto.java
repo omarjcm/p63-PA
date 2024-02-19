@@ -15,7 +15,7 @@ public interface GestionarObjeto {
     public void registrar(Object objeto);
     public void modificar(Object objeto);
     public void eliminar(Object objeto);
-    public Object buscar(Object objeto);
+    public ArrayList<Object> buscar(Object objeto);
     public ArrayList<Object> listar();
     
 }

@@ -7,6 +7,7 @@ package vista.estudiante;
 import controlador.GestionarEstudiante;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.dominio.Estudiante;
 
@@ -70,6 +71,11 @@ public class EstudianteGUI extends javax.swing.JFrame {
         jLabel1.setText("Buscar:");
 
         buscarBtn.setText("Buscar");
+        buscarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarBtnActionPerformed(evt);
+            }
+        });
 
         estudiantesTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -173,13 +179,39 @@ public class EstudianteGUI extends javax.swing.JFrame {
                 
                 if (boton.getName().equals("M")) {
                     EstudianteVistaGUI gui = new EstudianteVistaGUI((DefaultTableModel) this.estudiantesTbl.getModel(), estudiante, boton.getName());
-                    gui.setVisible(true);                    
+                    gui.setVisible(true);
                 } else if (boton.getName().equals("E")) {
-                    
+                    Object[] options = {"Si", "No"};
+                    int n = JOptionPane.showOptionDialog(this,
+                                "Esta seguro de eliminar el registro?",
+                                "Sistema de Registro",
+                                JOptionPane.YES_NO_OPTION,
+                                JOptionPane.QUESTION_MESSAGE,
+                                null,     //do not use a custom Icon
+                                options,  //the titles of buttons
+                                options[1]); //default button title
+                    if (n == 0) {
+                        this.gestionar.eliminar( estudiante );
+                        
+                        DefaultTableModel modelo = (DefaultTableModel) this.estudiantesTbl.getModel();
+                        modelo.removeRow( fila );
+                    }
                 }
             }
         }
     }//GEN-LAST:event_estudiantesTblMouseClicked
+
+    private void buscarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBtnActionPerformed
+        Estudiante obj = new Estudiante();
+        obj.setCedula( this.buscarTxt.getText() );
+        this.modelo = (DefaultTableModel) this.estudiantesTbl.getModel();
+        this.modelo.setRowCount(0);
+        ArrayList<Object> estudiantes = this.gestionar.buscar(obj);
+        for (Object estudiante : estudiantes) {
+            this.modelo.addRow( ((Estudiante)estudiante).getDatos() );
+        }
+        
+    }//GEN-LAST:event_buscarBtnActionPerformed
 
     /**
      * @param args the command line arguments
